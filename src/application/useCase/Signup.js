@@ -8,7 +8,7 @@ module.exports = class Signup {
     async execute(input) {
      
       
-      const user = new User(input.name, input.email, input.password, input.age);
+      const user = await User.create(input.name, input.email, input.password, input.age);
       await this.userRepository.save(user);
     }
   }

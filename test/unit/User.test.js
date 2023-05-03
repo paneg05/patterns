@@ -2,8 +2,8 @@
 const User = require("../../src/domain/entity/User")
 
 test('Deve criar um usuário',()=>{
-    const user = new User('jonh doe', 'john.doe@gmail.com', '12345678',30)
-
+    const user =  User.create('jonh doe', 'john.doe@gmail.com', '12345678',30)
+    console.log(user.age)
     expect(user.name).toBe('jonh doe')
     expect(user.email).toBe('john.doe@gmail.com')
     expect(user.password).toBe('12345678')
@@ -12,24 +12,24 @@ test('Deve criar um usuário',()=>{
 
 test('Não Deve criar um usuário com nome inválido',()=>{
     
-    expect(() => new User('jonh', 'john.doe@gmail.com', '12345678',30)).toThrow(new Error('Invalid name'))
+    expect(() => User.create('jonh', 'john.doe@gmail.com', '12345678',30)).toBe('Invalid name')
    
 })
 
 test('Não Deve criar um usuário com email inválido',()=>{
     
-    expect(() => new User('jonh doe', 'john.doe@gmail', '12345678',30)).toThrow(new Error('Invalid email'))
+    expect(() =>  User.create('jonh doe', 'john.doe@gmail', '12345678',30)).toBe('Invalid email')
    
 })
 
 test('Não Deve criar um usuário com nome inválido',()=>{
     
-    expect(() => new User('jonh doe', 'john.doe@gmail.com', '12348',30)).toThrow(new Error('Invalid password'))
+    expect(() => User.create('jonh doe', 'john.doe@gmail.com', '12348',30)).toBe('Invalid password')
    
 })
 
 test('Não Deve criar um usuário com idade inválida',()=>{
     
-    expect(() => new User('jonh doe', 'john.doe@gmail.com', '12345678',15)).toThrow(new Error('Invalid age'))
+    expect(() => User.create('jonh doe', 'john.doe@gmail.com', '12345678',15)).toBe('Invalid age')
    
 })

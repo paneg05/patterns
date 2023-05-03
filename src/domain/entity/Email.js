@@ -8,7 +8,7 @@ module.exports= class Email{
         this.value=email
     }
 
-    get getValue(){
+    getValue(){
         return this.value
     }
 }

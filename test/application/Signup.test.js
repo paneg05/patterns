@@ -36,7 +36,7 @@ test('não deve fazer o signup se a idade for menor de 18',async ()=>{
         age: 17
     }
     //when
-    expect(()=> signup.execute(inputSignup)).rejects.toThrow(new Error('Invalid age'))
+    expect(()=> signup.execute(inputSignup)).toThrow(new Error('Invalid age'))
     
     //then
     
